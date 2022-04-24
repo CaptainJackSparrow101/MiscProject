@@ -1,0 +1,50 @@
+	<div>
+	
+	
+		<style>
+		
+		table {
+			font-family: arial, sans-serif;
+                    	border-collapse: collapse;
+  			width: 60%;
+			}
+
+		td, th {
+  			border: 1px solid #dddddd;
+  			text-align: left;
+  			padding: 8px;
+			}
+
+		tr:nth-child(even) {
+  			background-color: #dddddd;
+			}
+			
+		</style>
+			
+		
+		<h1>History Page</h1>
+		<table>
+		{% if note2 %}
+			{{ note2 | safe }}
+		{% endif %}	
+	        </table>
+		
+	</div>
+	
+	<div>
+	<h1>Previous Input Values</h1>
+		<table>
+		{% if note3 %}
+			{{ note3 | safe }}
+		{% endif %}	
+		</table>
+	
+		
+	</div>
+
+	<div>
+	<h1>Previous Chart</h1>
+		{% if achart %}
+		   <img src="data:image/png;base64,{{ achart }}"\>	
+		{% endif %}	
+	</div>
