@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+import json
+import math
+import random
+import boto3
+import sys
+
+def lambda_handler(event, context):
+    
+    # TODO implement
+    shots = int(event['shots'])
+    mean =  float(event['key1'])
+    std = float(event['key2'])
+    v95 = []
+    v99 = []
+    simulated = [random.gauss(mean,std) for x in range(shots)]
+    # sort and pick 95% and 99%  - not distinguishing long/short here
+    simulated.sort(reverse=True)
+    var95 = simulated[int(len(simulated)*0.95)]
+    var99 = simulated[int(len(simulated)*0.99)]
+    v95.append(var95)
+    v99.append(var99)
+    return(v95, v99) # so you can see what is being produced
